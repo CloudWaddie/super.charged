@@ -24,11 +24,9 @@ def ImageToText(image, key):
 #img = PIL.Image.open("image.jpg")
 #ImageToText(img)
 
-def ImageAndTextToImage(prompt, img, key, stream=True):
+def ImageAndTextToText(prompt, img, key, stream=True):
     genai.configure(api_key=key)
     model = genai.GenerativeModel('gemini-pro-vision')
     response = model.generate_content([prompt, img], stream=stream)
     response.resolve()
     return response.text
-
-#ImageAndTextToImage("Write an essay on this", img)
